@@ -1,6 +1,7 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
 
   def index
-    return render :text => "xx"
+    @users = User.all
   end
+  
 end
