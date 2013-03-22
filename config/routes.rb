@@ -1,5 +1,22 @@
 Groupblog::Application.routes.draw do
+
+  devise_scope :user do
+    get "sign_in",  :to => "devise/sessions#new",       :as => :login
+    get "register", :to => "devise/registrations#new",  :as => :register
+    get "logout",   :to => "devise/sessions#destroy",   :as => :logout
+  end
   devise_for :users
+
+
+  match "/admin" => redirect('/admin/users')
+  namespace :admin do
+    resources :users
+  end
+
+  # devise_scope :user do
+  #   get "sign_in", :to => "devise/sessions#new"
+  # end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
