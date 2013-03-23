@@ -2,27 +2,32 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  belongs_to :role
+  has_many :user_roles
+  has_many :roles, :through => :user_roles
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles
 
   after_create :check_user_role
 
 
   def check_user_role
     if User.count == 1
-      update_attributes(:role => Role.find_by_name("Admin"))
+      self.roles << Role.find_by_name("Admin")
     else
-      update_attributes(:role => Role.find_by_name("User"))
+      self.roles << Role.find_by_name("User")
     end
   end
 
-  def is
-    role.name
+  def is?(role)
+    self.roles.exists?(:name => role)
   end
 
+  def owned_roles
+    self.roles.map(&:name)
+  end
 
 end

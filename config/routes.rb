@@ -11,6 +11,7 @@ Groupblog::Application.routes.draw do
   match "/admin" => redirect('/admin/users')
   namespace :admin do
     resources :users
+    resources :roles
   end
 
   # devise_scope :user do
