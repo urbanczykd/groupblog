@@ -1,5 +1,9 @@
 Groupblog::Application.routes.draw do
 
+
+
+  mount RedactorRails::Engine => '/redactor_rails'
+
   devise_scope :user do
     get "sign_in",  :to => "devise/sessions#new",       :as => :login
     get "register", :to => "devise/registrations#new",  :as => :register
@@ -7,11 +11,16 @@ Groupblog::Application.routes.draw do
   end
   devise_for :users
 
+  constraints(Subdomain) do
+    match '/' => 'blogs#show'
+  end
 
   match "/admin" => redirect('/admin/users')
   namespace :admin do
     resources :users
     resources :roles
+    resources :posts
+    resources :blogs
   end
 
   # devise_scope :user do

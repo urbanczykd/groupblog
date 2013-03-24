@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   has_many :user_roles
   has_many :roles, :through => :user_roles
+  has_many :posts, :foreign_key => 'author_id'
+  has_many :blogs, :foreign_key => 'owner_id'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable

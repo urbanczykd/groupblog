@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
 
   before do
+    User.all.destroy
     user = FactoryGirl.create(:user)
     
     #user.roles << FactoryGirl.create(:role)

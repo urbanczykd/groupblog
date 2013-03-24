@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Owner:
+  = @post.author.email
+%p
+  %b Title:
+  = @post.title
+%p
+  %b Body:
+  = @post.body.html_safe
+
+= link_to 'Edit', edit_admin_post_path(@post)
+\|
+= link_to 'Back', admin_posts_path

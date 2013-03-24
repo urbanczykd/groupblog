@@ -7,6 +7,9 @@ gem 'json'
 gem 'devise'
 gem "haml-rails"
 gem 'thin'
+gem 'redactor-rails'
+gem "carrierwave"
+gem "mini_magick"
 
 group :assets do
   gem "therubyracer"
@@ -23,6 +26,7 @@ group :test, :development do
   gem 'ffaker'
   gem 'mocha'
   gem "rspec-rails", "~> 2.0"
+  gem 'spork'
 end
 
 gem 'jquery-rails'

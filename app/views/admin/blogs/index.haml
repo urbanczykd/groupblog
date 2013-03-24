@@ -1,0 +1,21 @@
+%h1 Listing blogs
+
+%table.table
+  %tr
+    %th Name
+    %th Owner
+    %th
+    %th
+    %th
+
+  - @blogs.each do |blog|
+    %tr
+      %td= blog.name
+      %td= blog.owner.email if blog.owner.present?
+      %td=# link_to 'Show', admin_post_path(post), :class => "btn btn-success"
+      %td=# link_to 'Edit', edit_admin_post_path(post), :class => "btn btn-warning"
+      %td=# link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class =>"btn btn-danger"
+
+%br
+
+=# link_to 'New Post', new_admin_post_path
