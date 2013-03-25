@@ -24,8 +24,10 @@
               <% if current_user.blank? %>
                 <li><%= link_to('Login', login_path) if current_user.blank? %></li>
                 <li><%= link_to 'Register', register_path %></li>
-              <% else %>
+              <% elsif current_user.is?("Admin") %>
                 <li><%= link_to "Admin", admin_path %></li>
+              <% else %>
+                <li><%= link_to "Blogs", user_blogs_path(current_user) %></li>
                 <li><%= link_to "Logout", logout_path %></li>
               <% end %>
             </ul>
@@ -46,7 +48,7 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="well span10">
+        <div class="well span8">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>

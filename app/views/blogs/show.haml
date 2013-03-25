@@ -1,0 +1,16 @@
+= link_to "Add Post", new_user_blog_post_path(current_user, @blog)
+%p
+  %b Owner:
+  = @blog.owner.email
+%p
+  %b Title:
+  = @blog.name
+
+%p
+  = @blog.posts.count
+  = render :partial => "shared/post", :locals => {:posts => @posts}
+    
+=# link_to 'Edit', edit_admin_post_path(@post)
+.clearfix
+\|
+= link_to 'Back', user_blogs_path

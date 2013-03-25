@@ -1,0 +1,14 @@
+= form_for [:user, @blog] do |f|
+  - if @blog.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@blog.errors.count, "error")} prohibited this post from being saved:"
+      %ul
+        - @blog.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.hidden_field :owner_id, :value => current_user.id
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

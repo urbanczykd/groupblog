@@ -10,6 +10,7 @@ gem 'thin'
 gem 'redactor-rails'
 gem "carrierwave"
 gem "mini_magick"
+gem 'acts_as_commentable', '3.0.1'
 
 group :assets do
   gem "therubyracer"

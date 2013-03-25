@@ -1,0 +1,22 @@
+%table.table.table-striped
+  %caption
+    Blogs table
+  %thead
+    %tr
+      %th #id
+      %th #name
+      %th #posts
+      %th{:colspan => 2} 
+  %tbody
+    - @blogs.each do |blog|
+      %tr
+        %td= blog.id
+        %td= blog.name
+        %td= blog.posts.count
+        %td= link_to 'Show', user_blog_path(current_user, blog), :class => "btn btn-success"
+        %td=# link_to 'Edit', edit_admin_blog_path(blog), :class => "btn btn-warning"
+        %td= link_to 'Destroy', user_blog_path(current_user, blog), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class =>"btn btn-danger"
+
+%br
+
+= link_to 'New Blog', new_user_blog_path(params[:user_id])

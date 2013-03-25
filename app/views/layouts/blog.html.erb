@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : @blog.name %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "@blog.name" %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
   </head>
@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to @blog.name, root_path, :class => 'brand' %>
+          <%#= link_to @blog.name, root_path, :class => 'brand' %>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <% if current_user.blank? %>
@@ -46,14 +46,14 @@
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-        <div class="well span10">
+        <div class="span8">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->
 
       <footer>
-        <%= @blog.footer.html_safe if @blog.footer.present? %>
+        <%#= @blog.footer.html_safe if @blog.footer.present? %>
       </footer>
 
     </div> <!-- /container -->

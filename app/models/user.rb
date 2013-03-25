@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   has_many :user_roles
   has_many :roles, :through => :user_roles
-  has_many :posts, :foreign_key => 'author_id'
-  has_many :blogs, :foreign_key => 'owner_id'
+  has_many :posts, :class_name => "Post", :foreign_key => 'author_id'
+  has_many :blogs, :class_name => "Blog", :foreign_key => 'owner_id'
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :roles, :owner
 
   after_create :check_user_role
 
