@@ -3,6 +3,6 @@ class UserRole < ActiveRecord::Base
   belongs_to :user
   validates_uniqueness_of :user_id, :scope => [:role_id]
   
-  attr_accessible :user
-  
+  attr_accessible :user, :role
+ 
 end

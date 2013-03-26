@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325112915) do
+ActiveRecord::Schema.define(:version => 20130326115217) do
+
+  create_table "blog_authors", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "blog_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "blogs", :force => true do |t|
     t.integer  "author_id"

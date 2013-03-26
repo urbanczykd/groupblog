@@ -16,11 +16,12 @@ class BlogsController < ApplicationController
   end
 
   def new
-    @blog = User.find(params[:user_id]).blogs.new
+    @blog = User.find(params[:user_id]).blogs.build
   end
 
   def create
-    @blog = Blog.new(params[:blog])
+    @user = User.find(params[:user_id])
+    @blog = @user.blogs.build(params[:blog])
 
     respond_to do |format|
       if @blog.save
