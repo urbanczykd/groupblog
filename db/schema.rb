@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20130326115217) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "footer"
-    t.integer  "owner_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -85,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20130326115217) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "role_id"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

@@ -6,7 +6,8 @@
 
 # Ignore bundler config
 /.bundle
-
+#ignore redactor_assets
+/public/system/redactor_assets/
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
