@@ -5,7 +5,8 @@
     = post.title
     %br
     = post.body.html_safe
-    Comments:
-    = post.comments.count #do this better later use cache for count this
+    %p 
+      Comments:
+      = post.comments.count #do this better later use cache for count this
     - post.comments do |comment|
       = render :partial => "shared/comment", :locals => {:comment => comment}

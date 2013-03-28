@@ -1,3 +1,6 @@
+%legend
+  = link_to 'New Blog', new_user_blog_path(params[:user_id]), :class => "btn btn-success"
+
 %table.table.table-striped
   %caption
     Blogs table
@@ -18,5 +21,3 @@
         %td= link_to 'Destroy', user_blog_path(current_user, blog), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class =>"btn btn-danger"
 
 %br
-
-= link_to 'New Blog', new_user_blog_path(params[:user_id])

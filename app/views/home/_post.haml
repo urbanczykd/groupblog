@@ -1,0 +1,14 @@
+- posts.each do |post|
+  .class.well
+    %b
+      Title:
+    = post.title
+    %br
+    = post.body.html_safe
+    %p 
+      Comments:
+      = post.comments.count #do this better later use cache for count this
+    - post.comments.build do |comment|
+      = render :partial => "new_comment", :locals => {:comment => comment, :post => post}
+    - post.comments.each do |comment|
+      = render :partial => "comment", :locals => {:comment => comment}

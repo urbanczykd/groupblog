@@ -12,19 +12,14 @@ Groupblog::Application.routes.draw do
 
   resources :users, :only => [:show] do
     resources :blogs do
-      resources :posts# do
-#        resources :comments
-      #end
+      resources :posts
     end
   end
 
   constraints(Subdomain) do
+    match '/comment/:post_id' => 'home#create_comment', :as => "create_comment", :via => "post"
     match '/' => 'home#show' do
-      resources :posts
-      resources :comments
-      # do
-#        resources :comments
-#      end
+      resources :posts, :only => [:show]
     end
   end
 

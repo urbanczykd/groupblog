@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130326115217) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.text     "footer"
+    t.integer  "owner_id"
   end
 
   create_table "comments", :force => true do |t|

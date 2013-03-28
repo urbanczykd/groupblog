@@ -2,7 +2,9 @@
   Users which are in this blog..
   %br
   = @blog.users.map(&:email).join(", ")
-= link_to "Add Post", new_user_blog_post_path(current_user, @blog)
+= link_to "Add Post", new_user_blog_post_path(current_user, @blog), :class => "btn btn-success"
+%br
+%br
 %p
   %b Owner:
   = @blog.owner.email

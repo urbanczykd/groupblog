@@ -4,8 +4,9 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
 
-  default_scope :order => 'created_at ASC'
-
+  default_scope :order => 'created_at DESC'
+  attr_accessible :user_id, :comment
+  validates_presence_of :comment
   # NOTE: install the acts_as_votable plugin if you
   # want user to vote on the quality of comments.
   #acts_as_voteable
