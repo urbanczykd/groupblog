@@ -1,4 +1,4 @@
 group_blog
 ==========
 
-group_blog
+after migrate run seed
