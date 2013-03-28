@@ -10,5 +10,5 @@
       = post.comments.count #do this better later use cache for count this
     - post.comments.build do |comment|
       = render :partial => "new_comment", :locals => {:comment => comment, :post => post}
-    - post.comments.each do |comment|
-      = render :partial => "comment", :locals => {:comment => comment}
+    - post.comments[0..-2].each do |comment|
+      = render :partial => "comment",      :locals => {:comment => comment}

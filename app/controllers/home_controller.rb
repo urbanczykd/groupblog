@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 layout 'blog'
 
+  def set_right_layout
+    render :layout => "blog"
+  end
+
   def show
     @blog = Blog.find_by_slug!(request.subdomain)
     @posts = @blog.posts.order("created_at DESC")

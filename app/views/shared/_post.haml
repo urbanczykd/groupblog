@@ -7,6 +7,7 @@
     = post.body.html_safe
     %p 
       Comments:
-      = post.comments.count #do this better later use cache for count this
+      %span.badge.badge-warning
+        = post.comments.count #do this better later use cache for count this
     - post.comments do |comment|
       = render :partial => "shared/comment", :locals => {:comment => comment}
