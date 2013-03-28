@@ -1,3 +1,7 @@
+%legend.form-legend
+  Users which are in this blog..
+  %br
+  = @blog.users.map(&:email).join(", ")
 = link_to "Add Post", new_user_blog_post_path(current_user, @blog)
 %p
   %b Owner:

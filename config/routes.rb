@@ -12,17 +12,19 @@ Groupblog::Application.routes.draw do
 
   resources :users, :only => [:show] do
     resources :blogs do
-      resources :posts do
-        resources :comments
-      end
+      resources :posts# do
+#        resources :comments
+      #end
     end
   end
 
   constraints(Subdomain) do
     match '/' => 'home#show' do
-      resources :posts do
-        resources :comments
-      end
+      resources :posts
+      resources :comments
+      # do
+#        resources :comments
+#      end
     end
   end
 

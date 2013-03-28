@@ -21,11 +21,12 @@ class BlogsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @blog = @user.blogs.build(params[:blog])
-
+    @blog = Blog.new(params[:blog])
+    @blog.owner = current_user
     respond_to do |format|
-      if @blog.save
-        format.html { redirect_to user_blogs_path(current_user.id), notice: 'Post was successfully created.' }
+      if @blog.valid?
+        @blog = @user.blogs << @blog
+        format.html { redirect_to user_blogs_path(current_user), notice: 'Post was successfully created.' }
         format.json { render json: @blog, status: :created, location: @blog }
       else
         format.html { render action: "new" }
