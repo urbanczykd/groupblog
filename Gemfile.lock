@@ -184,6 +184,7 @@ DEPENDENCIES
   jquery-rails
   json
   less-rails
+  mail
   mini_magick
   mocha
   mysql2

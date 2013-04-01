@@ -1,0 +1,21 @@
+%h1 Invitations list
+
+%table.table
+  %tr
+    %th Blog#id
+    %th Blog#name
+    %th User#email
+    %th Status
+    %th
+
+  - @invitations.each do |invitations|
+    %tr
+      %td= blog.name
+      %td= blog.owner.email if blog.owner.present?
+      %td=# link_to 'Show', admin_post_path(post), :class => "btn btn-success"
+      %td=# link_to 'Edit', edit_admin_post_path(post), :class => "btn btn-warning"
+      %td=# link_to 'Destroy', [:admin, post], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class =>"btn btn-danger"
+
+%br
+
+= link_to 'New Invitations', new_user_invitation_path(current_user), :class => "btn btn-success"

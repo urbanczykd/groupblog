@@ -1,0 +1,17 @@
+= form_for [current_user, @invitation] do |f|
+  - if @invitation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@invitation.errors.count, "error")} prohibited this invitation from being saved:"
+      %ul
+        - @invitation.errors.full_messages.each do |msg|
+          %li= msg
+
+    = f.hidden_field :owner_id, :value => current_user.id
+  .field
+    = f.label :blog
+    = select_tag("invitation[:blog_id]", options_for_select(Blog.where(:owner_id => current_user.id).all.map{|blog| [blog.slug, blog.id]}))
+  .field
+    = f.label :email
+    = f.text_field :email
+  .actions
+    = f.submit 'Save and send invitation', :class => "btn btn-success"

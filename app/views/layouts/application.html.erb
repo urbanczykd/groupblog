@@ -24,9 +24,11 @@
               <% if current_user.blank? %>
                 <li><%= link_to('Login', login_path) if current_user.blank? %></li>
                 <li><%= link_to 'Register', register_path %></li>
-              <% elsif current_user.is?("Admin") %>
-                <li><%= link_to "Admin", admin_path %></li>
               <% else %>
+                <% if current_user.is?("Admin") %>
+                  <li><%= link_to "Admin", admin_path %></li>
+                <% end %>
+                <li><%= link_to "Invitations", user_invitations_path(current_user) %>
                 <li><%= link_to "Blogs", user_blogs_path(current_user) %></li>
                 <li><%= link_to "Logout", logout_path %></li>
               <% end %>

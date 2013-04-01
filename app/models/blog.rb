@@ -4,7 +4,7 @@ class Blog < ActiveRecord::Base
   has_many   :posts, :dependent => :destroy
   has_many :blog_authors, :inverse_of => :blog
   has_many :users, :through => :blog_authors, :dependent => :destroy
-  
+
   attr_accessible :author_id, :name, :slug, :owner_id, :user_id
 
 
