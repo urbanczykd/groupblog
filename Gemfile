@@ -27,7 +27,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'mocha'
-  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-rails', "~> 2.0"
   gem 'spork'
 end
 

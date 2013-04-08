@@ -17,13 +17,24 @@ class Invitation < ActiveRecord::Base
     self.code = Digest::SHA1.hexdigest(seed)
   end
 
+  def create_prototype_user(email)
+    password = generate_valid_password
+    User.create!(:password => password, :password_confirmation => password, :email => email )
+  end
+
+  def generate_valid_password
+    seed = "--#{rand(10000)}--#{Time.now}--"
+    Digest::SHA1.hexdigest(seed)
+  end
+
+
 
   def send_invitation
     Mail.deliver do
-       from    owner.email
-       to      self.email
-       subject 'I want to invite You to my blog'
-       body    "Please register or if You are registered accept invitation on panel #{url_for("cc")}"
+      from    owner.email
+      to      self.email
+      subject 'I want to invite You to my blog'
+      body    "Please register or if You are registered accept invitation on panel #{url_for("cc")}"
     end
   end
 

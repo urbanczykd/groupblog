@@ -6,7 +6,7 @@ FactoryGirl.define do
     email{ Faker::Internet.email }
     password 'password'
     password_confirmation { |x| x.password }
-    roles{|roles| [roles.association(:role)]}
+#    roles{|roles| [roles.association(:role)]}
       # after_create do |u|
       #   Factory(:role, :name => "User", :user => u)
       # end
